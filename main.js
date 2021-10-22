@@ -1,13 +1,12 @@
 const $ = document.querySelector.bind(document);
 
-function showImage(event){
+function showImage(){
     var breed = this.innerText;
     var priorSelected = $('.selected');
     if(priorSelected){
         priorSelected.className = '';
     }
-    eiekccfnuunhlljvfufcnkubhldlngifvgccnrifhklf
-    .classList.add('selected');
+    this.classList.add('selected');
     fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
     .then( r=>r.json() )
     .then( data => {
