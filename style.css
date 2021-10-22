@@ -1,0 +1,24 @@
+body {
+    background-color: #444;
+    color: #aaa;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header {
+    font-size: 35pt;
+
+}
+
+button {
+    background-color: transparent;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px gray;
+    color: #ddd
+}
+
+.selected {
+    background-color: yellowgreen;
+    color: #444
+}
