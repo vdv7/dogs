@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document);
 
+
 function showImage(){
     var breed = this.innerText;
     var priorSelected = $('.selected');
