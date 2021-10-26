@@ -1,4 +1,8 @@
+'use strict'
+
 const $ = document.querySelector.bind(document);
+
+
 
 
 function showImage(){
@@ -16,14 +20,13 @@ function showImage(){
     });
 }
 
-
-
 function createButton( txt ){
     var btn = document.createElement('button');
     btn.innerText = txt;
     $('#buttons').appendChild(btn);
     btn.onclick = showImage;
 }
+
 
 window.onload = function(){
     // $('.buttons').innerHTML = 'hey now'
