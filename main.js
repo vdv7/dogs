@@ -27,6 +27,13 @@ function createButton( txt ){
     btn.onclick = showImage;
 }
 
+function createComment( commentDoc ){
+    var div = document.createElement('div');
+    div.innerText = commentDoc.comment;
+    $('#comments').appendChild(div);
+    div.className = 'comment';
+}
+
 
 window.onload = function(){
     
@@ -53,6 +60,9 @@ window.onload = function(){
             $('#addCommentDiv').style.display = 'none';
         }
     });
+
+    //show comments
+    forEachComment( createComment );
 
     ////////////////////////////////
     // button and link functionality
@@ -82,10 +92,11 @@ window.onload = function(){
 
     $('#addCommentBtn').onclick = function(){
         addComment( $('#newComment').value )
+        .then( () => {
+            createComment({comment: $('#newComment').value});
+            $('#newComment').value = '';
+        })
         .catch( err => $('.error').innerText = err.message )
     }
-
-
-
 
 }

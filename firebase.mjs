@@ -53,9 +53,11 @@ window.onLogin = function( f ){
 //////////////////////////////////////////////
 // exposed functionality for db
 window.addComment = function(comment){
-    return addDoc(collection(db, "comments"), {comment} );
+    return addDoc( collection(db, "comments"), {comment} );
 }
 
-window.forEachComment = function( f ){
-    
+window.forEachComment = async function( f ){
+    var docs = await getDocs( collection(db, "comments") );
+    console.log(docs);
+    docs.forEach( doc => f(doc.data()) );
 }

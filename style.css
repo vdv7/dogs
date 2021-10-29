@@ -28,6 +28,12 @@ button {
     border: solid 1px gray;
 }
 
+.comment {
+    border: solid 1px gray;
+    margin: 15px;
+    padding: 15px;
+}
+
 .error {
     color:red;
 }
