@@ -37,3 +37,9 @@ button {
 .error {
     color:red;
 }
+
+a {
+    color: blue;
+    cursor: pointer;
+}
+

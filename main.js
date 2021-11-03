@@ -27,11 +27,11 @@ function createButton( txt ){
     btn.onclick = showImage;
 }
 
-function createComment( commentDoc ){
+function createComment( doc ){
     var div = document.createElement('div');
-    div.innerText = commentDoc.comment;
-    $('#comments').appendChild(div);
+    div.innerText = doc.comment;
     div.className = 'comment';
+    $('#comments').appendChild(div);
 }
 
 

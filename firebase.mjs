@@ -4,7 +4,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
-import { getFirestore, addDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
+import { getFirestore, addDoc, getDocs, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
 
 
 
@@ -27,10 +27,6 @@ const db = getFirestore(app);
 
 //////////////////////////////////////////////
 // exposed functionality for auth
-window.isLoggedIn = function(){
-    return auth.currentUser !== null;
-}
-
 window.login = function(email,password){
     return signInWithEmailAndPassword(auth, email, password);
 }
@@ -50,14 +46,15 @@ window.onLogin = function( f ){
 }
 
 
+
 //////////////////////////////////////////////
 // exposed functionality for db
 window.addComment = function(comment){
-    return addDoc( collection(db, "comments"), {comment} );
+    return addDoc( collection(db, "comments"),
+         {comment, createdOn: serverTimestamp() } );
 }
 
 window.forEachComment = async function( f ){
     var docs = await getDocs( collection(db, "comments") );
-    console.log(docs);
     docs.forEach( doc => f(doc.data()) );
 }
