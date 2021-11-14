@@ -2,11 +2,19 @@ body {
     background-color: #444;
     color: #aaa;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    scrollbar-width: thin;
 }
 
-.header {
-    font-size: 35pt;
+* {scrollbar-width:thin}
+scrollbar {width:5px;height:5px}
+::-webkit-scrollbar {width:5px;height:5px;}
+::-webkit-scrollbar-thumb {background: rgba(90,90,90,0.3);}
+::-webkit-scrollbar-track {background: rgba(0,0,0,0.1);}
 
+.header {
+    font-size: 24pt;
+    height: 13%
 }
 
 button {
@@ -15,8 +23,26 @@ button {
     padding: 5px;
     border-radius: 5px;
     border: solid 1px gray;
-    color: #ddd
+    color: #ddd;
+    font-size: 18pt;
+    display:inline-block;
+    width:90%;
+    max-width: 300px;
 }
+
+#buttons {
+    height:20%;
+    overflow-y: scroll;
+}
+
+#dog {
+    height:25%;
+    padding:1%;
+    /* background-color: #666; */
+    box-shadow: 0px 0px 21px 0px rgba(0,0,0,0.5);
+}
+
+img {height:100%}
 
 .selected {
     background-color: yellowgreen;
@@ -24,8 +50,9 @@ button {
 }
 
 #comments {
-    width: 80%;
-    border: solid 1px gray;
+    height:40%;
+    overflow-y: scroll;
+    /* border: solid 1px gray; */
 }
 
 .comment {

@@ -3,13 +3,29 @@
         <link rel="stylesheet" href="style.css">
         <script src="main.js"></script>
         <script src="firebase.mjs" type="module"></script>
+
+        <!-- for pwa -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="icon-512x512.png">
+        <link rel="manifest" href="manifest.webmanifest">
+        <script>
+            window.addEventListener('load', ()=>{
+                if('serviceWorker' in navigator){
+                    navigator.serviceWorker.register('/sw.js')
+                    .then(()=>console.log('service worker registered'))
+                    .catch(()=>console.warning('service worker not registered'));
+                }
+            });
+        </script>
     </head>
     <body>
         <div class="header">
             Welcome welcome, choose a dog breed.
         </div>
         <div id="buttons"></div>
-        <img id="dog">
+        <div id="dog"></div>
         <div id="comments">
             <div id="signupDiv" style="display:none">
                 Register to add a comment:
