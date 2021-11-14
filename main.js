@@ -16,7 +16,7 @@ function showImage(){
     .then( r=>r.json() )
     .then( data => {
         // console.log( data.message )
-        // $('#dog').innerHTML = `<img src=${data.message}>`;
+        $('#dog').innerHTML = `<img src=${data.message}>`;
     });
 }
 

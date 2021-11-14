@@ -6,3 +6,7 @@ self.addEventListener('activate', evt => {
     console.log('service worker activated')
 });
 
+self.addEventListener('fetch', evt => {
+    console.log('fetch event',evt);
+});
+
