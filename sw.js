@@ -1,4 +1,6 @@
-const CACHE_NAME = "offline";
+const VERSION = "1.1";
+
+const CACHE_NAME = "offline 1.1";
 const OFFLINE_URL = "offline.html";
 
 
@@ -19,7 +21,12 @@ async function onlineOrOffline(req){
     }
 }
 
+self.addEventListener("activate", (event) => {
+    console.log('sw activated '+VERSION);
+});
+
 self.addEventListener("install", (event) => {
+    console.log('sw installed '+VERSION);
     event.waitUntil( cacheOffline() );
 });
 
