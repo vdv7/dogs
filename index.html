@@ -15,7 +15,7 @@
                 if('serviceWorker' in navigator){
                     navigator.serviceWorker.register('/sw.js')
                     .then(()=>console.log('service worker registered'))
-                    .catch(()=>console.warning('service worker not registered'));
+                    .catch(()=>console.warn('service worker not registered'));
                 }
             });
         </script>
