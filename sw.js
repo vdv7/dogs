@@ -1,4 +1,4 @@
-const CACHE_NAME = "v1.5";
+const CACHE_NAME = "v1.8";
 const OFFLINE_URL = "offline.html";
 
 
@@ -32,7 +32,7 @@ async function onlineOrOffline(req){
 
 self.addEventListener("install", (event) => {
     event.waitUntil( cacheOffline() );
-    // self.skipWaiting();
+    self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
