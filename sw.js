@@ -1,12 +1,20 @@
-const VERSION = "1.1";
-
-const CACHE_NAME = "offline 1.1";
+const CACHE_NAME = "v1.5";
 const OFFLINE_URL = "offline.html";
 
 
 async function cacheOffline(){
     const cache = await caches.open(CACHE_NAME);
-    await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+    cache.add( OFFLINE_URL );
+}
+
+function deleteOldCache(){
+    caches.keys()
+    .then(keys=>{
+        return Promise.all(keys
+            .filter(key=>key!==CACHE_NAME)
+            .map(key=>caches.delete(key))
+        )
+    });
 }
 
 async function onlineOrOffline(req){
@@ -14,6 +22,7 @@ async function onlineOrOffline(req){
         // Always try the network first.
         return await fetch(req);
     } catch (error) {
+        console.log(error)
         // if there is a network error, respond with offline files
         const cache = await caches.open(CACHE_NAME);
         const cachedResponse = await cache.match(OFFLINE_URL);
@@ -21,13 +30,13 @@ async function onlineOrOffline(req){
     }
 }
 
-self.addEventListener("activate", (event) => {
-    console.log('sw activated '+VERSION);
+self.addEventListener("install", (event) => {
+    event.waitUntil( cacheOffline() );
+    // self.skipWaiting();
 });
 
-self.addEventListener("install", (event) => {
-    console.log('sw installed '+VERSION);
-    event.waitUntil( cacheOffline() );
+self.addEventListener("activate", (event) => {
+    event.waitUntil( deleteOldCache() );
 });
 
 self.addEventListener("fetch", (event) => {
