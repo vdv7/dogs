@@ -5,18 +5,23 @@ window.addEventListener('load',()=>{
             && !window.matchMedia('(display-mode: standalone)').matches
             && !navigator.standalone
             && !document.referrer.startsWith('android-app://')){
-        var installBtn = document.body.appendChild(document.createElement('div'));
-        installBtn.style.position='fixed';
-        installBtn.style.bottom='0px';
-        installBtn.style.width='100%';
-        installBtn.style.textAlign='center';
-        installBtn.style.backgroundColor='#ccc';
-        installBtn.style.color='#333';
-        installBtn.innerHTML='⬇ install this app ⬇';
+        
+        var installBtn;
+        function addInstallBtn(){
+            installBtn = document.body.appendChild(document.createElement('div'));
+            installBtn.style.position='fixed';
+            installBtn.style.bottom='0px';
+            installBtn.style.width='100%';
+            installBtn.style.textAlign='center';
+            installBtn.style.backgroundColor='#ccc';
+            installBtn.style.color='#333';
+            installBtn.innerHTML='⬇ install this app ⬇';
+        }
         if(android){
             window.addEventListener('beforeinstallprompt', e=>{
                 e.preventDefault();
                 window.installPrompt=e;
+                addInstallBtn();
                 installBtn.onclick=()=>{
                     window.installPrompt.prompt();
                 }
@@ -30,6 +35,7 @@ window.addEventListener('load',()=>{
                     installBtn.onclick=showInstructions;
                 }
             }
+            addInstallBtn();
             installBtn.onclick=showInstructions;
         }
     }
