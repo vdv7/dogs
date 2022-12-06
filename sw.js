@@ -5,6 +5,7 @@ const OFFLINE_URL = "offline.html";
 async function cacheOffline(){
     const cache = await caches.open(CACHE_NAME);
     cache.add( OFFLINE_URL );
+    cache.addAll([file1, file2, file3] )
 }
 
 function deleteOldCache(){
