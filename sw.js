@@ -5,7 +5,10 @@ const OFFLINE_URL = "offline.html";
 async function cacheOffline(){
     const cache = await caches.open(CACHE_NAME);
     cache.add( OFFLINE_URL );
-    cache.addAll([file1, file2, file3] )
+    //can add files to cache by using
+    //  cacheAdd( fileName )
+    //   or
+    //  cache.addAll([fileName1, fileName2, fileName3...] )
 }
 
 function deleteOldCache(){
